@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Online Gallery</title>
+	<style>
+		html{
+			background-image: url('images/background.png');
+		}
+		header, footer{
+			background-image: url('images/header_background.jpg');
+		}
+		#contact{
+			background-image: url('images/img3.jpg');
+		}
+		/*#navbar{
+			top: -50px;
+			position: fixed;
+			transition: top 0.3s;
+			background-color: #222;
+		}*/
+		#navbar{
+			width: 100%;
+			background-color: #222;
+		}
+		#menuUl li{
+			float: left;
+			margin: 0 2%;
+			font-size: 35px;
+			word-spacing: 5px;
+			letter-spacing: 2px;
+			font-weight: bolder;
+			display: inline-block;
+			font-family: 'Rochester', cursive;
+		}
+		#menuUl a{
+			color: #CCC;
+		}
+		#menuUl a:hover{
+			color: #457fe9;
+			background-color: #333;
+		}
+		#add{
+			width: 100%;
+			margin: 2% 0;
+			font-size: 20px;
+		}
+		/* modal */
+		#addPhotoDiv{
+			top: 0;
+			left: 0;
+			z-index: 1;
+			width: 100%;
+			height: 100%;
+			display: none;
+			overflow: auto;
+			position: fixed;
+		}
+		/* modal content */ 
+		#add-photo-content{
+			width:80%;
+			margin: 20% auto 15% auto;
+			padding: 0 2%;
+    		border: 1px solid #888;
+			background-color: #555;
+		}
+		/* The Close Button (x) */
+		#close{
+			font-size: 20px;
+		}
+		#close:hover,
+		#close:focus {
+		    color: red;
+		    background-color: #000;
+		}
+
+		/* Add Zoom Animation */
+		.animate {
+		    -webkit-animation: animatezoom 0.6s;
+		    animation: animatezoom 0.6s
+		}
+
+		@-webkit-keyframes animatezoom {
+		    from {-webkit-transform: scale(0)} 
+		    to {-webkit-transform: scale(1)}
+		}
+		    
+		@keyframes animatezoom {
+		    from {transform: scale(0)} 
+		    to {transform: scale(1)}
+		}
+	
+	</style>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<!-- Add icon library -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600|Rochester" rel="stylesheet">
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+</head>
+<body class="container" ng-app="myApp" ng-controller="myCtrl">
+	<header class="row">
+		<section id="home">
+			<div class="col-md-12">
+				<h1>Online Gallary</h1>
+			</div>
+			<div class="col-md-12">
+				<ul id="socialUl">
+					<li ng-repeat="icon in socialIcons"><a class={{icon.class}} href={{icon.url}} target="_blank"></a></li>
+				</ul>
+			</div>
+			<div class="topnav col-md-12" id="navbar">
+				<ul id="menuUl">
+					<li ng-repeat="item in menuItems">
+						<a href={{item.url}}>{{item.name}}</a>
+					</li>
+					<!--<li><a href="javascript:void(0);" class="icon" onclick="myFunction()">&#9776;</a></li>-->
+				</ul>
+			</div>
+		</section>
+	</header>
+	<section class="row" id="hr">
+		<hr>
+	</section>
+	<article class="row">
+		<section class="col-md-6" id="about">
+			<h2>About Us:</h2><br>
+			<p style="line-height: 30px; font-size: 18px;">Welcome to Online Gallary website. This website allow you to save your image as a repository. Also there allow you to upload your image and make your personal gallary. Welcome to Online Gallary website. This website allow you to save your image as a repository. Also there allow you to upload your image and make your personal gallary.</p>
+		</section>
+		<section class="col-md-6">
+			<picture class="col-md-11">
+				<img class="img-responsive img-rounded" src="images/img1.jpg" alt="Photography" title="Photography">
+			</picture>
+		</section>
+	</article>
+	<section class="row" id="hr">
+		<hr>
+	</section>
+	<article class="row" id="gallary">
+		<section class="col-md-12 text-center"><h2>Gallary</h2></section>
+		<section class="col-md-4" id="gallary_section">
+			<picture class="col-md-12">
+				<img class="img-responsive img-rounded" src="images/img2.jpg" alt="Photography" title="Photography">
+			</picture>
+		</section>
+		<section class="col-md-4" id="gallary_section">
+			<picture class="col-md-12">
+				<img class="img-responsive img-rounded" src="images/img2.jpg" alt="Photography" title="Photography">
+			</picture>
+		</section>
+		<section class="col-md-4" id="gallary_section">
+			<picture class="col-md-12">
+				<img class="img-responsive img-rounded" src="images/img2.jpg" alt="Photography" title="Photography">
+			</picture>
+		</section>
+		<section class="col-md-4" id="gallary_section">
+			<picture class="col-md-12">
+				<img class="img-responsive img-rounded" src="images/img5.jpg" alt="Photography" title="Photography">
+			</picture>
+		</section>
+		<section class="col-md-4" id="gallary_section">
+			<picture class="col-md-12">
+				<img class="img-responsive img-rounded" src="images/img6.jpg" alt="Photography" title="Photography">
+			</picture>
+		</section>
+		<section class="col-md-4" id="gallary_section">
+			<picture class="col-md-12">
+				<img class="img-responsive img-rounded" src="images/img5.jpg" alt="Photography" title="Photography">
+			</picture>
+		</section>
+		<section class="col-md-4" id="gallary_section">
+			<picture class="col-md-12">
+				<img class="img-responsive img-rounded" src="images/img5.jpg" alt="Photography" title="Photography">
+			</picture>
+		</section>
+		<section class="col-md-4" id="gallary_section">
+			<picture class="col-md-12">
+				<img class="img-responsive img-rounded" src="images/img6.jpg" alt="Photography" title="Photography">
+			</picture>
+		</section>
+		<section class="col-md-4" id="gallary_section">
+			<picture class="col-md-12">
+				<img class="img-responsive img-rounded" src="images/img5.jpg" alt="Photography" title="Photography">
+			</picture>
+		</section
+		<section class="col-md-12">
+			<button class="btn btn-primary" id="add" onclick="document.getElementById('addPhotoDiv').style.display = 'block' ">Add Photo</button>
+			<div id="addPhotoDiv">
+				<form class="animate" id="add-photo-content">
+					<div id="container">
+						<button class="btn btn-danger" id="close" onclick="document.getElementById('addPhotoDiv').style.display='none'" style="float: right;" title="Close Modal">&times;</button>
+						<h3 class="text-center">Add photo Form</h3>
+						<input type="file" name="input_file" id="input_file" required>
+						<button class="btn btn-primary" id="add">Add Photo</button>
+					</div>
+				</form>
+			</div>
+		</section>
+	</article>
+	<section class="row" id="hr">
+		<hr>
+	</section>
+	<article class="row" id="contact">
+		<section>
+			<br><h2>Contact Me:</h2>
+			<form>
+				<div class="col-md-4">
+					<input class="col-md-12" type="text" name="name" ng-model="name" placeholder="Name" required>
+				</div>
+				<div class="col-md-4">
+					<input class="col-md-12" type="email" name="email" ng-model="email" placeholder="Email" required>
+				</div>
+				<div class="col-md-4">
+					<input class="col-md-12" type="tel" name="phone" ng-model="phone" placeholder="Phone" required>
+				</div>
+				<div class="col-md-12">
+					<textarea class="col-md-12" name="message" ng-model="msg" placeholder="Message" rows="6" required></textarea>
+				</div>
+				<div class="col-md-12" >
+					<input class="col-md-1" id="submit" type="submit" name="submit" ng-model="submit" value="SEND">
+				</div>
+			</form>
+		</section>
+	</article>
+	<section class="row" id="hr">
+		<hr>
+	</section>
+	<footer class="row" id="footer">
+		<h2 class="col-md-12">Badr Shahin</h2>
+		<div>
+			<p>&copy; Badr Shahin 2017-2018, All rights reserved.</p>
+			<div class="col-md-12">
+				<ul id="socialUl">
+					<li ng-repeat="icon in socialIcons"><a class={{icon.class}} href={{icon.url}} target="_blank"></a></li>
+				</ul>
+			</div>
+		</div>
+	</footer>
+	<!--<script>
+		window.onscroll = function() {scrollFunc()};
+		function scrollFunc() {
+			if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+				document.getElementById('navbar').style.top = "0";
+			}else{
+				document.getElementById('navbar').style.top = "-50px";
+			}
+		}
+	</script>
+	<script>
+		function addPhoto(){
+
+		}
+	</script>-->
+	<script>
+		// Get the modal
+		var addModal = document.getElementById('addPhotoDiv');
+
+		// When the user clicks anywhere outside of the modal, close it
+		window.onclick = function(event) {
+		    if (event.target == addModal) {
+		    	addModal.style.display = "none";
+		    }
+		}
+	</script>
+</body>
+</html>
